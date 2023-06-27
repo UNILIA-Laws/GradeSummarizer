@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Excel;
+use App\Models\Results;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class ExcelExport implements FromCollection
@@ -12,6 +12,6 @@ class ExcelExport implements FromCollection
     */
     public function collection()
     {
-        return Excel::all();
+        return Results::all();
     }
 }

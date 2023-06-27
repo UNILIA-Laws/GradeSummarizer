@@ -19,5 +19,5 @@ Route::get('/', function () {
 
 Route::get('/upload', 'App\Http\Controllers\ExcelController@fileImportExport')->name('upload.form');
 Route::post('/import-excel', 'App\Http\Controllers\ExcelController@fileImport')->name('file-import');
-Route::get('file-export', [ExcelController::class, 'fileExport'])->name('file-export');
+Route::get('file-export', 'App\Http\Controllers\ExcelController@fileExport')->name('file-export');
 

@@ -1,22 +1,52 @@
 <?php
 namespace App\Imports;
-use App\Models\User;
+use App\Models\results;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-class ExcelImport implements ToModel
+use Maatwebsite\Excel\Imports\HeadingRowFormatter;
+
+class ExcelImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
+
+    
     public function model(array $row)
     {
-        return new User([
-            'name'     => $row[0],
-            'email'    => $row[1],
-            'password' => Hash::make($row[2])
+        HeadingRowFormatter::default('none');
+
+        $check = $row['remarks'];
+
+    if (strpos($check, 'Su') !== false || stripos($check, 'su') !== false || stripos($check, 'SU') !== false){
+
+        
+        $pattern = '/(\d+)\s*[Ss]/'; // Regular expression pattern to match the number before "S" or "s"
+
+        $matches = [];
+        preg_match($pattern, $check, $matches);
+
+        if (isset($matches[1])) {
+            $numberBeforeS = $matches[1];
+            $remark =  $numberBeforeS;
+        } else {
+            echo "No match found.";
+        }
+
+
+        //values
+        $name = $row['name'];
+        $reg = $row['reg'];
+       
+
+        return new results([
+            'name'=> $name,
+            'reg'=> $reg,
+            'remark'=> $remark,
         ]);
     }
+}
 }
