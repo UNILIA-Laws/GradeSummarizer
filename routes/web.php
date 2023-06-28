@@ -21,3 +21,7 @@ Route::get('/upload', 'App\Http\Controllers\ExcelController@fileImportExport')->
 Route::post('/import-excel', 'App\Http\Controllers\ExcelController@fileImport')->name('file-import');
 Route::get('file-export', 'App\Http\Controllers\ExcelController@fileExport')->name('file-export');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
