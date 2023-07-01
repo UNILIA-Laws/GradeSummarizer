@@ -14,10 +14,13 @@ class ExcelImport implements ToModel, WithHeadingRow
     * @return \Illuminate\Database\Eloquent\Model|null
     */
 
+   
     
     public function model(array $row)
     {
-        HeadingRowFormatter::default('none');
+        
+
+        
 
         $check = $row['remarks'];
 
@@ -46,7 +49,17 @@ class ExcelImport implements ToModel, WithHeadingRow
             'name'=> $name,
             'reg'=> $reg,
             'remark'=> $remark,
+            
         ]);
+
+        echo "Uploaded successfully!";
     }
 }
+ public function headingRow(): int
+    {
+        $counter = 8;
+
+        
+        return $counter;
+    }
 }

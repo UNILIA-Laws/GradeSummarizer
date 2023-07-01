@@ -26,7 +26,7 @@
                         <body>
                             <div class="container mt-5 text-center">
                                 <h2 class="mb-4">
-                                    Grades Summazer
+                                    Grades Summariser
                                 </h2>
                                 <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
