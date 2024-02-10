@@ -12,6 +12,7 @@ class results extends Model
     protected $fillable = [
         'name',
         'reg',
-        'remark'
+        'remark',
+        'program'
     ];
 }
